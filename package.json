@@ -1,0 +1,21 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:chrome": "cypress run --browser chrome"
+  },
+  "keywords": [],
+  "author": "Iago Oliveira Guedes",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.8.0",
+    "faker-br": "^0.4.1"
+  },
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.2",
+    "cypress-file-upload": "^5.0.8",
+    "faker": "^6.6.6"
+  }
+}
