@@ -1,6 +1,4 @@
 
-# Gran Pro | Order to pay
-
 Este projeto visa facilitar a automação de testes Front-end E2E, proporcionando um ambiente ideal para treinamento e aprimoramento das habilidades em automação.
 
 ## Stack utilizada
