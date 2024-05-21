@@ -1,10 +1,13 @@
 /// <reference types="Cypress" />
 
+import { faker } from '@faker-js/faker';
+
+
 describe('Cadastro de usuário', () => {
 
-    const user_date = require ('../fixtures/user_create.json')
-    
-    it('Validar campo nome vazio', () => {
+    const user_date = require('../fixtures/user_create.json')
+
+    beforeEach('Acessando página de cadastro', () => {
 
         cy.visit('/')
             .get('.header-logo')
@@ -12,6 +15,9 @@ describe('Cadastro de usuário', () => {
         cy.get('.fa-lock').click()
             .get('#user')
             .should('be.visible')
+    })
+
+    it('Validar campo nome vazio', () => {
 
         cy.get('#btnRegister').click()
 
@@ -20,12 +26,7 @@ describe('Cadastro de usuário', () => {
 
     it('Validar campo e-mail vazio', () => {
 
-        cy.visit('/')
-            .get('.header-logo')
-
-        cy.get('.fa-lock').click()
-
-        cy.get('#user').should('be.visible').type(user_date.name)
+        cy.get('#user').type(user_date.name)
 
         cy.get('#btnRegister').click()
 
@@ -34,12 +35,7 @@ describe('Cadastro de usuário', () => {
 
     it('Validar campo e-mail inválido', () => {
 
-        cy.visit('/')
-            .get('.header-logo')
-
-        cy.get('.fa-lock').click()
-
-        cy.get('#user').should('be.visible').type(user_date.name)
+        cy.get('#user').type(user_date.name)
 
         cy.get('#email').should('be.visible').type('emailinválido')
 
@@ -50,14 +46,11 @@ describe('Cadastro de usuário', () => {
 
     it('Validar campo senha vazio', () => {
 
-        cy.visit('/')
-            .get('.header-logo')
+        const name = faker.person.fullName()
 
-        cy.get('.fa-lock').click()
+        cy.get('#user').type(name)
 
-        cy.get('#user').should('be.visible').type(user_date.name)
-
-        cy.get('#email').should('be.visible').type(user_date.email)
+        cy.get('#email').should('be.visible').type(faker.internet.email(name))
 
         cy.get('#btnRegister').click()
 
@@ -66,12 +59,7 @@ describe('Cadastro de usuário', () => {
 
     it('Validar campo senha inválido', () => {
 
-        cy.visit('/')
-            .get('.header-logo')
-
-        cy.get('.fa-lock').click()
-
-        cy.get('#user').should('be.visible').type(user_date.name)
+        cy.get('#user').type(user_date.name)
 
         cy.get('#email').should('be.visible').type(user_date.email)
 
@@ -84,12 +72,7 @@ describe('Cadastro de usuário', () => {
 
     it('Validar campo senha com sucesso!', () => {
 
-        cy.visit('/')
-            .get('.header-logo')
-
-        cy.get('.fa-lock').click()
-
-        cy.get('#user').should('be.visible').type(user_date.name)
+        cy.get('#user').type(user_date.name)
 
         cy.get('#email').should('be.visible').type(user_date.email)
 
