@@ -16,7 +16,7 @@ describe('Cadastro de usuário', () => {
     it('Validar campo nome vazio', () => {
 
         cy.SaveRegister()
-        cy.get('.errorLabel').should('have.text', 'O campo nome deve ser prenchido')
+        cy.messageError('O campo nome deve ser prenchido')
 
     });
 
@@ -24,7 +24,7 @@ describe('Cadastro de usuário', () => {
 
         cy.fillName(user_date.name)
         cy.SaveRegister()
-        cy.get('.errorLabel').should('have.text', 'O campo e-mail deve ser prenchido corretamente')
+        cy.messageError('O campo e-mail deve ser prenchido corretamente')
 
     });
 
@@ -33,7 +33,7 @@ describe('Cadastro de usuário', () => {
         cy.fillName(user_date.name)
         cy.fillEmail('emailinválido')
         cy.SaveRegister()
-        cy.get('.errorLabel').should('have.text', 'O campo e-mail deve ser prenchido corretamente')
+        cy.messageError('O campo e-mail deve ser prenchido corretamente')
 
     });
 
@@ -44,7 +44,7 @@ describe('Cadastro de usuário', () => {
         cy.fillName(name)
         cy.fillEmail(faker.internet.email(name))
         cy.SaveRegister()
-        cy.get('.errorLabel').should('have.text', 'O campo senha deve ter pelo menos 6 dígitos')
+        cy.messageError('O campo senha deve ter pelo menos 6 dígitos')
 
     });
 
@@ -54,7 +54,7 @@ describe('Cadastro de usuário', () => {
         cy.fillEmail(user_date.email)
         cy.fillPassword('123')
         cy.SaveRegister()
-        cy.get('.errorLabel').should('have.text', 'O campo senha deve ter pelo menos 6 dígitos')
+        cy.messageError('O campo senha deve ter pelo menos 6 dígitos')
 
     });
 
@@ -64,9 +64,7 @@ describe('Cadastro de usuário', () => {
         cy.fillEmail(user_date.email)
         cy.fillPassword(user_date.password)
         cy.SaveRegister()
-        cy.get('#swal2-title').should('have.text', 'Cadastro realizado!')
-        cy.get('#swal2-html-container').should('have.text', `Bem-vindo ${user_date.name}`)
-
+        cy.checkRegisterSucess(user_date.name)
 
     });
 

@@ -7,6 +7,7 @@ module.exports = defineConfig({
   e2e: {
     experimentalStudio: true,
     baseUrl: 'https://automationpratice.com.br',
+    defaultCommandTimeout: 4000,
     setupNodeEvents(on, config) {
 
     },
