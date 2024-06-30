@@ -7,7 +7,6 @@ on:
     branches: [master]
 
 jobs:
-
       # o que vai ser feito nessa pipeline
       # só teremos um job: rodar os testes
 
